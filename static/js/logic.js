@@ -72,15 +72,31 @@ d3.json(geoJSON_url).then(record=>{
 
         //Adding geoJSON layer with circle markers to map
         L.geoJSON(JSON_record, {
+        //Defining the zone where the earthquake occurred, using latitude and longitude
         pointToLayer: function (feature, latlng) {
-            return L.circleMarker(L.latLng(latitude, longitude), geojsonMarkerOptions);
+            
+            //Setting the zone as a circle using latitude and longitude as its center. 
+            //Circle's properties are defined by geojsonMarkerOptions value
+            let eq_circle = L.circleMarker(L.latLng(latitude, longitude), geojsonMarkerOptions);
+
+            //HTML text in Popup
+            let HTML_popup_message = "<p><b>Type:</b> <br><b>Place:</b> <br><b>Magnitude:</b> <br><b>Time:</b> <br></p>"
+            
+            //Adding a binding Popup for that circle with relevant info
+            eq_circle.bindPopup(HTML_popup_message);
+            
+            return  eq_circle;
         }
-    }).addTo(mymap);
+         }).addTo(mymap);
+    
 
     }
     )
     
 })
+
+
+
 
 
 
