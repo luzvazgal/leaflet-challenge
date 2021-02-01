@@ -10,8 +10,13 @@ html {
 }
 
 .legend {
-  line-height: 18px;
+  line-height: 19px;
   color: #555;
+  background-color: white;
+  padding-top: 10px;
+  padding-right: 10px;
+  padding-bottom: 10px;
+  padding-left: 10px;
 }
 .legend i {
   width: 18px;
@@ -19,4 +24,5 @@ html {
   float: left;
   margin-right: 8px;
   opacity: 0.7;
+
 }
