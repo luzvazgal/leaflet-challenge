@@ -44,19 +44,19 @@ Your first task is to visualize an earthquake data set.
 
    Color based on earthquake magnitude are: 
 
-   0-1 = #27AE60
-   1-2 = #DAF7A6
-   2-3 = #FFC300
-   3-4 = #F39C12
-   4-5 = #FF5733
-   5+ = #900C3F 
+      * 0-1 = #27AE60
+      * 1-2 = #DAF7A6
+      * 2-3 = #FFC300
+      * 3-4 = #F39C12
+      * 4-5 = #FF5733
+      * 5+ = #900C3F 
 
    * Popups that provide additional information about the earthquake when a marker is clicked are included: 
 
-   Earthquake magnitude,
-   Place: where the earthquake took place,
-   Time: formatted from timestamp to 'en-us' locale
-   Type: of earthquake
+      * Earthquake magnitude
+      * Place: where the earthquake took place
+      * Time: formatted from timestamp to 'en-us' locale
+      * Type: of earthquake
 
    * Create a legend that will provide context for your map data.
 
