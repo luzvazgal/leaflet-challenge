@@ -25,6 +25,7 @@ d3.json(geoJSON_url).then(record=>{
     JSON_features.forEach(JSON_record=>{
        // console.log(JSON_record.properties)
 
+       /*ASSGINING RELEVANT EARTHQUAKE PROPERTIES TO VARIABLES*/
         //Earthquake magnitude
         let magnitude = JSON_record.properties.mag
 
@@ -32,31 +33,17 @@ d3.json(geoJSON_url).then(record=>{
         let latitude = JSON_record.geometry.coordinates[1];
         let longitude = JSON_record.geometry.coordinates[0];
  
-        let color = "";
-        //Setting circle color according to magnitude
-        switch (Math.floor(magnitude)){
-            case 0:     //Magnitude 0-1
-                color = "#27AE60";
-                break;
-            case 1:     //Magnitude 1-2
-                color = "#DAF7A6";
-                break;
-            case 2:     //Magnitude 2-3
-                color = "#FFC300";
-                break;
-            case 3:     //Magnitude 3-4
-                color = "#F39C12";
-                break;
-            case 4:     //Magnitude 4-5
-                color = "#FF5733";
-                break;
-            case 5:     //Magnitude 5-6
-                color = "#900C3F";
-                break;
-            default:    //Magnitude 6+
-                color = "#900C3F"; 
-                break;
-        }
+        //Circle's color representing earthquake zone
+        let color = getColor(magnitude);
+
+        //Earthquake type
+        let type = JSON_record.properties.type
+
+        //Earthquake place
+        let place = JSON_record.properties.place
+
+        //Earthquake time
+        let date = setTime(JSON_record.properties.time)
 
 
         //Options to draw each Circle marker representing an earthquake
@@ -80,7 +67,7 @@ d3.json(geoJSON_url).then(record=>{
             let eq_circle = L.circleMarker(L.latLng(latitude, longitude), geojsonMarkerOptions);
 
             //HTML text in Popup
-            let HTML_popup_message = "<p><b>Type:</b> <br><b>Place:</b> <br><b>Magnitude:</b> <br><b>Time:</b> <br></p>"
+            let HTML_popup_message = "<p><b>Type:</b>"+type+"<br><b>Place:</b>"+place+"<br><b>Magnitude:</b>"+magnitude+"<br><b>Date:</b>"+date+"<br></p>"
             
             //Adding a binding Popup for that circle with relevant info
             eq_circle.bindPopup(HTML_popup_message);
@@ -95,8 +82,49 @@ d3.json(geoJSON_url).then(record=>{
     
 })
 
+/**
+ * Based on earthquake's magnitude, the color will be assigned to earthquake's zone represented by a circle
+ * @param {decimal} magnitude 
+ */
+function getColor(magnitude){
+    let color = "";
 
+    //Setting circle color according to magnitude
+    switch (Math.floor(magnitude)){
+    case 0:     //Magnitude 0-1
+        color = "#27AE60";
+        break;
+    case 1:     //Magnitude 1-2
+        color = "#DAF7A6";
+        break;
+    case 2:     //Magnitude 2-3
+        color = "#FFC300";
+        break;
+    case 3:     //Magnitude 3-4
+        color = "#F39C12";
+        break;
+    case 4:     //Magnitude 4-5
+        color = "#FF5733";
+        break;
+    case 5:     //Magnitude 5-6
+        color = "#900C3F";
+        break;
+    default:    //Magnitude 6+
+        color = "#900C3F"; 
+        break;
+    }
 
+    return color;
+}
+
+/**
+ * 
+ * @param {*} timestamp 
+ */
+function setTime(timestamp){
+    let date = 
+    return date;
+}
 
 
 
