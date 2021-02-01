@@ -24,7 +24,7 @@
 
 ### Level 1: Basic Visualization
 
-![2-BasicMap](images/Leaflet earthquake map.jpeg)
+![1-BasicMap](https://github.com/luzvazgal/leaflet-challenge/blob/main/images/Leaflet%20earthquake%20map.jpeg)
 
 Your first task is to visualize an earthquake data set.
 
