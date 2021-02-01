@@ -14,9 +14,14 @@ L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
 
 
 
-d3.json(geoJSON_url).then(data=>{
+d3.json(geoJSON_url).then(record=>{
     
-    console.log(data)
+    console.log("entro")
+    let features = record.features
+
+    console.log(features)
+
+    L.geoJSON(features).addTo(mymap);
 })
 
 
