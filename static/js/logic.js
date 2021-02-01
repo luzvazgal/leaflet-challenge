@@ -1,6 +1,6 @@
 //Creating the map
-var mymap = L.map('map').setView([37.757815,-122.5076402],5);
-var geoJSON_url = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/4.5_week.geojson"
+var mymap = L.map('map').setView([37.757815,-107.5076402],4.5);
+var geoJSON_url = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson"
 
 //Setting tile layer
 L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
