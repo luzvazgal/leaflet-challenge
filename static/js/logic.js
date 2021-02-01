@@ -32,12 +32,38 @@ d3.json(geoJSON_url).then(record=>{
         let latitude = JSON_record.geometry.coordinates[1];
         let longitude = JSON_record.geometry.coordinates[0];
  
+        let color = "";
+        //Setting circle color according to magnitude
+        switch (Math.floor(magnitude)){
+            case 0:     //Magnitude 0-1
+                color = "#27AE60";
+                break;
+            case 1:     //Magnitude 1-2
+                color = "#DAF7A6";
+                break;
+            case 2:     //Magnitude 2-3
+                color = "#FFC300";
+                break;
+            case 3:     //Magnitude 3-4
+                color = "#F39C12";
+                break;
+            case 4:     //Magnitude 4-5
+                color = "#FF5733";
+                break;
+            case 5:     //Magnitude 5-6
+                color = "#900C3F";
+                break;
+            default:    //Magnitude 6+
+                color = "#900C3F"; 
+                break;
+        }
+
 
         //Options to draw each Circle marker representing an earthquake
         let geojsonMarkerOptions = {
-            radius: magnitude*3,              //Setting the circle marker radius according to earthquake magnitude
-            fillColor: "#ff7800",
-            color: "#000",
+            radius: magnitude*4,              //Setting the circle marker radius according to earthquake magnitude
+            fillColor: color,
+            color: 'grey',
             weight: 1,
             opacity: 1,
             fillOpacity: 0.8
