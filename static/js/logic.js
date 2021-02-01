@@ -67,7 +67,7 @@ d3.json(geoJSON_url).then(record=>{
             let eq_circle = L.circleMarker(L.latLng(latitude, longitude), geojsonMarkerOptions);
 
             //HTML text in Popup
-            let HTML_popup_message = "<p><b>Type:</b>"+type+"<br><b>Place:</b>"+place+"<br><b>Magnitude:</b>"+magnitude+"<br><b>Date:</b>"+date+"<br></p>"
+            let HTML_popup_message = "<p><b>Type: </b>"+type+"<br><b>Place: </b>"+place+"<br><b>Magnitude: </b>"+magnitude+"<br><b>Date: </b>"+date+"<br></p>"
             
             //Adding a binding Popup for that circle with relevant info
             eq_circle.bindPopup(HTML_popup_message);
@@ -118,12 +118,20 @@ function getColor(magnitude){
 }
 
 /**
- * 
- * @param {*} timestamp 
+ * sets Timestamp into a "Date + Time" format using 'en-US' locale
+ * @param {timestamp} time Timestamp when the earthquake occurred
  */
-function setTime(timestamp){
-    let date = 
-    return date;
+function setTime(time){
+    let date = new Date(time);
+
+    //Getting time as string format to add it to Popup
+    let timeString = " "+date.getHours()+":"+date.getMinutes()+":"+date.getSeconds();
+
+    //Options to display Date format 
+    const options = { year: "numeric", month: "short", day: "numeric" }
+
+    //Returns date and time using 'en-US' locale
+    return date.toLocaleDateString("en-US", options)+timeString;
 }
 
 
