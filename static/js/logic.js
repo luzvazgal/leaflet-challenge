@@ -15,16 +15,16 @@ L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
 }).addTo(mymap);
 
 
-//Adding legend to map
+//Adding legend to map for colors in map
 let legend = new L.Control({position: 'bottomleft'});
 legend.onAdd = function (map) {
 
-    var div = L.DomUtil.create('div', 'info legend'),
+    let div = L.DomUtil.create('div', 'info legend'),
         magnitudes = [0, 1, 2, 3, 4, 5];
         labels = [];
 
     // loop through our density intervals and generate a label with a colored square for each interval
-    for (var i = 0; i < magnitudes.length; i++) {
+    for (let i = 0; i < magnitudes.length; i++) {
         div.innerHTML +=
             '<i style="background:' + getColor(magnitudes[i]) + '"></i> ' +
             magnitudes[i] + (magnitudes[i + 1] ? '&ndash;' + magnitudes[i + 1] + '<br>' : '+');
