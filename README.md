@@ -24,7 +24,7 @@
 
 ### Level 1: Basic Visualization
 
-![2-BasicMap](images/Leaflet earthquake map.jpeg)
+(images/Leaflet earthquake map.jpeg)
 
 Your first task is to visualize an earthquake data set.
 
