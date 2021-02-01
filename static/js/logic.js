@@ -13,23 +13,48 @@ L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
 }).addTo(mymap);
 
 
+//Reading geoJSON data and adding them to map
 
 d3.json(geoJSON_url).then(record=>{
     
-    console.log("entro")
-    let features = record.features
+   //Array of features
+    let JSON_features = record.features
 
-    console.log(features)
+    console.log(JSON_features)
 
-    L.geoJSON(features).addTo(mymap);
+    JSON_features.forEach(JSON_record=>{
+       // console.log(JSON_record.properties)
+
+        //Earthquake magnitude
+        let magnitude = JSON_record.properties.mag
+
+        //Latitude and longitude of each earthquake
+        let latitude = JSON_record.geometry.coordinates[1];
+        let longitude = JSON_record.geometry.coordinates[0];
+ 
+
+        //Options to draw each Circle marker representing an earthquake
+        let geojsonMarkerOptions = {
+            radius: magnitude*3,              //Setting the circle marker radius according to earthquake magnitude
+            fillColor: "#ff7800",
+            color: "#000",
+            weight: 1,
+            opacity: 1,
+            fillOpacity: 0.8
+        };
+
+
+        //Adding geoJSON layer with circle markers to map
+        L.geoJSON(JSON_record, {
+        pointToLayer: function (feature, latlng) {
+            return L.circleMarker(L.latLng(latitude, longitude), geojsonMarkerOptions);
+        }
+    }).addTo(mymap);
+
+    }
+    )
+    
 })
 
 
-/*L.geoJSON(data, {
-    style: function (feature) {
-        return {color: feature.properties.color};
-    }
-}).bindPopup(function (layer) {
-    return layer.feature.properties.description;
-}).addTo(mymap);*/
 
